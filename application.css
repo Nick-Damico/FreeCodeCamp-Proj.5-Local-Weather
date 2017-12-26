@@ -1,1 +1,7 @@
 
+#temp {
+
+}
+  #temp::after {
+    content: "°";
+  }
