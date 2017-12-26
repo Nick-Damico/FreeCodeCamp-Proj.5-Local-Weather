@@ -4,29 +4,38 @@ $( document ).ready(function() {
   if ("geolocation" in navigator) {
   // geolocation is available
 
-  // Use geolocation Web API to get Users current position
-  navigator.geolocation.getCurrentPosition(geoSuccess,geoError, geoOptions);
-
   // User position successful retrieved by GeoLocationAPI
-  function geoSuccess(position) {
+  function geoSuccess( position ) {
     const userCoords = position.coords;
     const userLat = userCoords.latitude;
     const userLong = userCoords.longitude;
 
     // Use stored geolocation info for AJAX request to Freecodecamp Weather api
-    
+    $.ajax({
+      method: 'GET',
+      url:    'httpas://fcc-weather-api.glitch.me/api/current',
+      data:   {lon: userLong, lat: userLat}
+    }).done( function( response ) {
+
+    }).fail( function( jqXHR, textStatus ) {
+        alert( "Request failed: " + textStatus );
+    }).always( function() {
+        console.log('request complete');
+    });
   }
 
   function geoError() {
     alert('Sorry, no position available.');
   }
 
-  const geo_options = {
+  const geoOptions = {
     enableHighAccuracy: true,
     maximumAge        : 30000,
     timeout           : 27000
   };
 
+  // Use geolocation Web API to get Users current position
+  navigator.geolocation.getCurrentPosition( geoSuccess, geoError, geoOptions );
 
 
 } else {
