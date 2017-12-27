@@ -391,7 +391,20 @@ template {
   display: none; }
 
 body {
-  background: teal; }
+  background: white;
+  text-align: center; }
+
+.wrapper {
+  width: 90%;
+  max-width: 580px;
+  margin: 0 auto; }
+
+h1 {
+  margin-top: 0; }
+
+main {
+  margin: 10px auto;
+  text-align: center; }
 
 .toggle-1 {
   position: relative;
@@ -411,7 +424,7 @@ body {
   .toggle-1::after {
     content: '°F';
     top: 9px;
-    left: 40px; }
+    left: 46px; }
   .toggle-1 .toggle-1__input {
     display: none; }
     .toggle-1 .toggle-1__input:checked + .toggle-1__button::before {
@@ -442,5 +455,55 @@ body {
       position: absolute;
       border-radius: 50px;
       transition: all 0.4s ease; }
+
+.main-header h1 {
+  font-size: 4.5rem;
+  color: #585858; }
+  .main-header h1 .main-title-weather {
+    color: #00B8FF; }
+  .main-header h1 .main-title-api {
+    color: #FA67E1; }
+
+section#weather-module {
+  background-color: #00e6ff;
+  background: linear-gradient(to top right, #00e6ff, #0066ff);
+  border-radius: 20px;
+  padding-top: 20px;
+  padding-bottom: 25px;
+  margin: 10px auto;
+  max-width: 280px;
+  width: 90%; }
+  section#weather-module .inner-weather-module {
+    display: inline-block; }
+  section#weather-module .temp-container span {
+    display: block;
+    width: 100%; }
+  section#weather-module .temp-container .temp-daily-low {
+    text-align: left; }
+  section#weather-module .temp-container .temp-daily-high {
+    text-align: right; }
+  section#weather-module .temp-container .temp-daily-low,
+  section#weather-module .temp-container .temp-daily-high {
+    color: #fff;
+    text-transform: uppercase; }
+    section#weather-module .temp-container .temp-daily-low::after,
+    section#weather-module .temp-container .temp-daily-high::after {
+      content: '°';
+      color: #fff; }
+  section#weather-module .temp-container .current-temp {
+    font-size: 6.875rem;
+    color: #00ffc8;
+    margin-top: -16px;
+    margin-bottom: -16px;
+    position: relative; }
+    section#weather-module .temp-container .current-temp::after {
+      content: '°';
+      color: #fff;
+      position: absolute;
+      font-size: 3.5rem;
+      top: 10px; }
+  section#weather-module .location-heading {
+    color: #fff;
+    font-size: 2.2rem; }
 
 /*# sourceMappingURL=application.css.map */

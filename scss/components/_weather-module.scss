@@ -1,0 +1,59 @@
+section#weather-module {
+  background-color: $defaultBgModule;
+  background: linear-gradient(to top right, $moduleBg1, $moduleBg2);
+  border-radius: 20px;
+  padding-top: 20px;
+  padding-bottom: 25px;
+  margin: 10px auto;
+  max-width: 280px;
+  width: 90%;
+
+  .inner-weather-module {
+    display: inline-block;
+  }
+
+  .temp-container{
+    span {
+      display: block;
+      width: 100%;
+    }
+
+    .temp-daily-low {
+      text-align: left;
+    }
+    .temp-daily-high {
+      text-align: right;
+    }
+
+    .temp-daily-low,
+    .temp-daily-high {
+      color: #fff;
+      text-transform: uppercase;
+      &::after {
+        content: '°';
+        color: #fff;
+      }
+    }
+
+    .current-temp {
+      font-size: 6.875rem;
+      color: $tempColor;
+      margin-top: -16px;
+      margin-bottom: -16px;
+      position: relative;
+
+      &::after {
+        content: '°';
+        color: #fff;
+        position: absolute;
+        font-size: 3.5rem;
+        top: 10px;
+      }
+    }
+  }
+
+  .location-heading {
+    color: #fff;
+    font-size: 2.2rem;
+  }
+}

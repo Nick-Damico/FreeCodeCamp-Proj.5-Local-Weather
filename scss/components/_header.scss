@@ -1,0 +1,11 @@
+.main-header h1 {
+  font-size: 4.5rem;
+  color: $textMain;
+
+  .main-title-weather {
+    color: $textWeather;
+  }
+  .main-title-api {
+    color: $textAPI;
+  }
+}

@@ -1,0 +1,16 @@
+$greyText:     rgb(88,88,88);
+$textBlue:     #00B8FF;
+$textPink:     #FA67E1;
+$candyRed:     hsl(341, 100%, 50%);
+$skyBlue:      hsl(216, 100%, 50%);
+$weatherGreen: hsl(186, 100%, 50%);
+$happyGreen:   hsl(167, 100%, 50%);
+
+
+$textMain:        $greyText;
+$textWeather:     $textBlue;
+$textAPI:         $textPink;
+$defaultBgModule: $weatherGreen;
+$moduleBg1:       $weatherGreen;
+$moduleBg2:       $skyBlue;
+$tempColor:       $happyGreen;
