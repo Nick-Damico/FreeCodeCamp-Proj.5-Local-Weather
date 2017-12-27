@@ -2,7 +2,8 @@ section#weather-module {
   background-color: $defaultBgModule;
   background: linear-gradient(to top right, $moduleBg1, $moduleBg2);
   border-radius: 20px;
-  box-shadow: 0px 1px 5px 3px #09439a;
+  box-shadow: 0px 1px 5px 3px #09439a,
+              inset 0 1px 8px 0 white;
   padding-top: 20px;
   padding-bottom: 25px;
   margin: 10px auto;
@@ -15,6 +16,7 @@ section#weather-module {
 
   .temp-container{
     span {
+      font-family: $font-stack-openS;
       display: block;
       width: 100%;
     }
@@ -29,7 +31,6 @@ section#weather-module {
     .temp-daily-low,
     .temp-daily-high {
       color: #fff;
-      text-transform: uppercase;
       &::after {
         content: '°';
         color: #fff;
@@ -56,5 +57,7 @@ section#weather-module {
   .location-heading {
     color: #fff;
     font-size: 2.2rem;
+    font-family: $font-stack-work;
+    font-weight: 300;
   }
 }
