@@ -3,10 +3,11 @@
     font-family: Helvetica, Arial, sans-serif;
     display: inline-block;
     vertical-align: top;
-    margin: 0 15px 0 0;
+    margin: 0 0 0 0;
 
   &::before,
   &::after {
+    font-family: $font-stack-openS;
     position: absolute;
     color: #fff;
     font-size: 1.5rem;
