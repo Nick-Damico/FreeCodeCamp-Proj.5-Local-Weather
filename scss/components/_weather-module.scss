@@ -2,10 +2,11 @@ section#weather-module {
   background-color: $defaultBgModule;
   background: linear-gradient(to top right, $moduleBg1, $moduleBg2);
   border-radius: 20px;
+  box-shadow: 0px 1px 5px 3px #09439a;
   padding-top: 20px;
   padding-bottom: 25px;
   margin: 10px auto;
-  max-width: 280px;
+  max-width: 250px;
   width: 90%;
 
   .inner-weather-module {
@@ -44,7 +45,7 @@ section#weather-module {
 
       &::after {
         content: '°';
-        color: #fff;
+        color: darken($candyRed, 10%);
         position: absolute;
         font-size: 3.5rem;
         top: 10px;
