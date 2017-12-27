@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600|Work+Sans:300,400" rel="stylesheet">
     <link rel="stylesheet" href="css/application.css">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <!-- <script src="application.js"></script> -->
+    <script src="application.js"></script>
   </head>
   <body>
     <div class="wrapper">
@@ -19,11 +19,12 @@
           <div class="inner-weather-module">
             <h2 id="location" class="location-heading">Knoxville</h2>
             <div class="temp-container">
-              <span id="tempDailyLow" class="temp-daily-low">Low: 20</span>
+              <span id="low">Low: <i id="tempDailyLow" class="temp-daily-low">20</i><span>
               <span id="currentTemp" class="current-temp">35</span>
-              <span id="tempDailyHigh" class="temp-daily-high">High: 50</span>
+              <span id="high">High: <i id="tempDailyHigh" class="temp-daily-high">50</i></span>
             </div>
-            <p>Icon Here.</p>
+            <p id="description">description</p>
+            <div id="iconContainer"></div>
 
             <label for="toggle1" class="toggle-1">
               <input type="checkbox" id="toggle1" class="toggle-1__input" />
