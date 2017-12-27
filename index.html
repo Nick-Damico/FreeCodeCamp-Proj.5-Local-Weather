@@ -9,26 +9,28 @@
     <!-- <script src="application.js"></script> -->
   </head>
   <body>
-    <header>
-      <h1>Get Your Weather with <span class="main-title-weather">Weather</span><span class="main-title-api">API</span></h1>
-    </header>
-    <main>
-      <section id="weather-module">
-          <h2 id="location">Your Location</h2>
-          <div class="temp-container">
-            <span id="temp-daily-low">Low: 20</span>
-            <span id="temp">35</span>
-            <span id="temp-daily-high">High: 50</span>
+    <div class="wrapper">
+      <header class="main-header">
+        <h1>Get Your Weather with <span class="main-title-weather">Weather</span><span class="main-title-api">API</span></h1>
+      </header>
+      <main>
+        <section id="weather-module">
+          <div class="inner-weather-module">
+            <h2 id="location" class="location-heading">Knoxville</h2>
+            <div class="temp-container">
+              <span id="tempDailyLow" class="temp-daily-low">Low: 20</span>
+              <span id="currentTemp" class="current-temp">35</span>
+              <span id="tempDailyHigh" class="temp-daily-high">High: 50</span>
+            </div>
+            <p>Icon Here.</p>
+
+            <label for="toggle1" class="toggle-1">
+              <input type="checkbox" id="toggle1" class="toggle-1__input" />
+              <span class="toggle-1__button"></span>
+            </label>
           </div>
-          <p>Icon Here.</p>
-
-          <label for="toggle1" class="toggle-1">
-            <input type="checkbox" id="toggle1" class="toggle-1__input" />
-            <span class="toggle-1__button"></span>
-          </label>
-
-      </section>
-
-    </main>
+        </section>
+      </main>
+    </div>
   </body>
 </html>
