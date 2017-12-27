@@ -414,7 +414,7 @@ main {
   font-family: Helvetica, Arial, sans-serif;
   display: inline-block;
   vertical-align: top;
-  margin: 0 0 0 0; }
+  margin: 10px 0 0 0; }
   .toggle-1::before, .toggle-1::after {
     font-family: "Open Sans", sans-serif;
     position: absolute;
@@ -482,12 +482,15 @@ section#weather-module {
   section#weather-module .inner-weather-module {
     display: inline-block; }
   section#weather-module .temp-container span {
+    color: #fff;
     font-family: "Open Sans", sans-serif;
     display: block;
     width: 100%; }
-  section#weather-module .temp-container .temp-daily-low {
+    section#weather-module .temp-container span i {
+      font-style: normal; }
+  section#weather-module .temp-container #low {
     text-align: left; }
-  section#weather-module .temp-container .temp-daily-high {
+  section#weather-module .temp-container #high {
     text-align: right; }
   section#weather-module .temp-container .temp-daily-low,
   section#weather-module .temp-container .temp-daily-high {
@@ -497,11 +500,13 @@ section#weather-module {
       content: '°';
       color: #fff; }
   section#weather-module .temp-container .current-temp {
+    text-align: center;
     font-size: 6.875rem;
     color: #00ffc8;
     margin-top: -16px;
     margin-bottom: -16px;
-    position: relative; }
+    position: relative;
+    letter-spacing: -6px; }
     section#weather-module .temp-container .current-temp::after {
       content: '°';
       color: #cc0041;
@@ -513,5 +518,13 @@ section#weather-module {
     font-size: 2.2rem;
     font-family: "Work Sans", sans-serif;
     font-weight: 300; }
+  section#weather-module #description {
+    display: none;
+    font-family: "Work Sans", sans-serif;
+    color: white;
+    font-size: 1.3rem;
+    margin-bottom: 0;
+    border-top: solid 1px #6fd2d2;
+    padding-top: 1rem; }
 
 /*# sourceMappingURL=application.css.map */

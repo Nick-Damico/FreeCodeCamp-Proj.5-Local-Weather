@@ -1,7 +1,4 @@
 // Global Variables to store temps after weather API request
-  // Storing temps global will allow them to be accessiable later for 'click' event
-let tempInC;
-let tempInF;
 
 function tempToF ( temp ) {
   return Math.round( temp * 9 / 5 + 32 );
@@ -13,14 +10,30 @@ function tempToC ( temp ) {
 
 $( document ).ready(function() {
 
-  // DOM Elements for appending | inserting data
-  $location = $( '#location' );
-  $temp = $( '#temp' );
-  // Check if users browser has geolocation available
-  if ("geolocation" in navigator) {
-  // geolocation is available
+  //==============================================
+  //    jQuery DOM Elements
+  //==============================================
 
-  // User position successful retrieved by GeoLocationAPI
+  const $location = $( '#location' );
+  const $temp = $( '#currentTemp' );
+  const $dailyLow = $( '#tempDailyLow' );
+  const $dailyHigh = $( '#tempDailyHigh' );
+  const $description = $( '#description' );
+  const $imgDiv = $( '#iconContainer' );
+
+  //==============================================
+  //    Document.ready() scoped variables
+  //==============================================
+
+  let temp = '',
+      tempLow = '',
+      tempHigh = '',
+      city = '';
+
+  //==============================================
+  //   geoLocationAPI Functions & variables
+  //==============================================
+
   function geoSuccess( position ) {
     const userCoords = position.coords;
     const userLat = userCoords.latitude;
@@ -35,8 +48,18 @@ $( document ).ready(function() {
 
       tempInC = Math.round( response['main']['temp'] );
       tempInF = tempToF( tempInC );
-      $location.html( response.name );
-      $temp.html( tempInC );
+
+      temp = response['main']['temp'];
+      tempLow = response['main']['temp_min'];
+      tempHigh = response['main']['temp_max'];
+      city = response.name;
+
+      $location.fadeOut(600, function() { $(this).html( city ) }).fadeIn(600);
+      $temp.fadeOut(600, function() { $(this).html( Math.round( temp ) ) }).fadeIn(600);
+      $dailyLow.fadeOut(600, function() { $(this).html( Math.round( tempLow ) ) }).fadeIn(600);
+      $dailyHigh.fadeOut(600, function() { $(this).html( Math.round( tempHigh ) ) }).fadeIn(600);
+      $description.html( response["weather"][0]["description"] ).fadeIn(600);
+      $imgDiv.html(`<img src="${response["weather"][0]["icon"]}" alt="${response["weather"][0]["description"]} weather icon" />`).fadeIn(600);
 
     }).fail( function( jqXHR, textStatus ) {
 
@@ -57,15 +80,42 @@ $( document ).ready(function() {
     timeout           : 27000
   };
 
-  // Use geolocation Web API to get Users current position
-  navigator.geolocation.getCurrentPosition( geoSuccess, geoError, geoOptions );
 
+  //==============================================
+  //   Execution Code for Weather APP
+  //==============================================
 
-} else {
-  // geolocation IS NOT available
-  // Append to the DOM later
-  console.log('Sorry, Geolocation is not available in your browser.')
-}
+  // Check if users browser has geolocation available
+  if ("geolocation" in navigator) {
+    // geolocation is available
+    // Use geolocation Web API to get Users current position
+    navigator.geolocation.getCurrentPosition( geoSuccess, geoError, geoOptions );
+  } else {
+    // geolocation IS NOT available
+    // Append to the DOM later
+    console.log('Sorry, Geolocation is not available in your browser.')
+  }
 
+  //==============================================
+  //   Event Handlers
+  //==============================================
+
+  $('#toggle1').on('click', function(e) {
+    if ( $( this ).is( ':checked' ) ) {
+      $temp.fadeOut(600, function () { $(this).html( tempToF( temp ) ) })
+           .fadeIn(600);
+      $dailyLow.fadeOut(600, function () { $(this).html( tempToF( tempLow ) ) })
+               .fadeIn(600);
+      $dailyHigh.fadeOut(600, function () { $(this).html( tempToF( tempHigh ) ) })
+                .fadeIn(600);
+    } else {
+        $temp.fadeOut(600, function() { $(this).html( Math.round( temp ) ) })
+             .fadeIn(600);
+        $dailyLow.fadeOut(600, function() { $(this).html( Math.round( tempLow ) ) })
+                 .fadeIn(600);
+        $dailyHigh.fadeOut(600, function() { $(this).html( Math.round( tempHigh ) ) })
+                  .fadeIn(600);
+    }
+  });
 
 }); // END of document.ready()
