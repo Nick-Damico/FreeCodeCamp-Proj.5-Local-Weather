@@ -34,6 +34,11 @@ $( document ).ready(function() {
   //   geoLocationAPI Functions & variables
   //==============================================
 
+  
+  function fadeOutAndIn(obj, callback) {
+    obj.fadeOut(600,callback).fadeIn(600);
+  }
+
   function geoSuccess( position ) {
     const userCoords = position.coords;
     const userLat = userCoords.latitude;
@@ -49,17 +54,21 @@ $( document ).ready(function() {
       tempInC = Math.round( response['main']['temp'] );
       tempInF = tempToF( tempInC );
 
-      temp = response['main']['temp'];
-      tempLow = response['main']['temp_min'];
-      tempHigh = response['main']['temp_max'];
+      temp = Math.round( response['main']['temp'] );
+      tempLow = Math.round( response['main']['temp_min'] );
+      tempHigh = Math.round( response['main']['temp_max'] );
+      description = response["weather"][0]["description"];
+      icon = response["weather"][0]["icon"];
       city = response.name;
 
-      $location.fadeOut(600, function() { $(this).html( city ) }).fadeIn(600);
-      $temp.fadeOut(600, function() { $(this).html( Math.round( temp ) ) }).fadeIn(600);
-      $dailyLow.fadeOut(600, function() { $(this).html( Math.round( tempLow ) ) }).fadeIn(600);
-      $dailyHigh.fadeOut(600, function() { $(this).html( Math.round( tempHigh ) ) }).fadeIn(600);
-      $description.html( response["weather"][0]["description"] ).fadeIn(600);
-      $imgDiv.html(`<img src="${response["weather"][0]["icon"]}" alt="${response["weather"][0]["description"]} weather icon" />`).fadeIn(600);
+      fadeOutAndIn($location, function() {$location.html(city)});
+      fadeOutAndIn($temp, function() {$temp.html( temp )});
+      fadeOutAndIn($dailyLow, function() {$dailyLow.html( tempLow )});
+      fadeOutAndIn($dailyHigh, function() {$dailyHigh.html( tempHigh)});
+      fadeOutAndIn($description, function() {$description.html( description )})
+
+      $description.html( description ).fadeIn(600);
+      $imgDiv.html(`<img src="${icon}" alt="${description} weather icon" />`).fadeIn(600);
 
     }).fail( function( jqXHR, textStatus ) {
 
@@ -69,6 +78,7 @@ $( document ).ready(function() {
         console.log('request complete');
     });
   }
+
 
   function geoError() {
     alert('Sorry, no position available.');
@@ -102,19 +112,14 @@ $( document ).ready(function() {
 
   $('#toggle1').on('click', function(e) {
     if ( $( this ).is( ':checked' ) ) {
-      $temp.fadeOut(600, function () { $(this).html( tempToF( temp ) ) })
-           .fadeIn(600);
-      $dailyLow.fadeOut(600, function () { $(this).html( tempToF( tempLow ) ) })
-               .fadeIn(600);
-      $dailyHigh.fadeOut(600, function () { $(this).html( tempToF( tempHigh ) ) })
-                .fadeIn(600);
+      fadeOutAndIn($temp, function () { $(this).html( tempToF(temp))});
+      fadeOutAndIn($dailyLow, function () { $(this).html( tempToF( tempLow ) ) });
+      fadeOutAndIn($dailyHigh, function () { $(this).html( tempToF( tempHigh ) ) });
+
     } else {
-        $temp.fadeOut(600, function() { $(this).html( Math.round( temp ) ) })
-             .fadeIn(600);
-        $dailyLow.fadeOut(600, function() { $(this).html( Math.round( tempLow ) ) })
-                 .fadeIn(600);
-        $dailyHigh.fadeOut(600, function() { $(this).html( Math.round( tempHigh ) ) })
-                  .fadeIn(600);
+      fadeOutAndIn($temp, function() { $(this).html( Math.round( temp ) ) });
+      fadeOutAndIn($dailyLow, function() { $(this).html( Math.round( tempLow ) ) });
+      fadeOutAndIn($dailyHigh, function() { $(this).html( Math.round( tempHigh ) ) });
     }
   });
 
