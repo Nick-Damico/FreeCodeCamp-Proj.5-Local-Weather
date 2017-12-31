@@ -488,7 +488,7 @@ section#weather-module {
     width: 100%; }
     section#weather-module .temp-container span i {
       font-style: normal; }
-  section#weather-module .temp-container #low {
+  section#weather-module .temp-container #humidity {
     text-align: left; }
   section#weather-module .temp-container #high {
     text-align: right; }

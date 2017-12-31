@@ -34,7 +34,7 @@ $( document ).ready(function() {
   //   geoLocationAPI Functions & variables
   //==============================================
 
-  
+
   function fadeOutAndIn(obj, callback) {
     obj.fadeOut(600,callback).fadeIn(600);
   }
@@ -50,12 +50,12 @@ $( document ).ready(function() {
       url:    'https://fcc-weather-api.glitch.me/api/current',
       data:   {lon: userLong, lat: userLat}
     }).done( function( response ) {
-
+      console.log(response);
       tempInC = Math.round( response['main']['temp'] );
       tempInF = tempToF( tempInC );
 
       temp = Math.round( response['main']['temp'] );
-      tempLow = Math.round( response['main']['temp_min'] );
+      humidity = response['main']['humidity'];
       tempHigh = Math.round( response['main']['temp_max'] );
       description = response["weather"][0]["description"];
       icon = response["weather"][0]["icon"];
@@ -63,7 +63,7 @@ $( document ).ready(function() {
 
       fadeOutAndIn($location, function() {$location.html(city)});
       fadeOutAndIn($temp, function() {$temp.html( temp )});
-      fadeOutAndIn($dailyLow, function() {$dailyLow.html( tempLow )});
+      fadeOutAndIn($dailyLow, function() {$dailyLow.html( humidity )});
       fadeOutAndIn($dailyHigh, function() {$dailyHigh.html( tempHigh)});
       fadeOutAndIn($description, function() {$description.html( description )})
 
@@ -113,13 +113,13 @@ $( document ).ready(function() {
   $('#toggle1').on('click', function(e) {
     if ( $( this ).is( ':checked' ) ) {
       fadeOutAndIn($temp, function () { $(this).html( tempToF(temp))});
-      fadeOutAndIn($dailyLow, function () { $(this).html( tempToF( tempLow ) ) });
+      fadeOutAndIn($dailyLow, function () { $(this).html( humidity ) });
       fadeOutAndIn($dailyHigh, function () { $(this).html( tempToF( tempHigh ) ) });
 
     } else {
-      fadeOutAndIn($temp, function() { $(this).html( Math.round( temp ) ) });
-      fadeOutAndIn($dailyLow, function() { $(this).html( Math.round( tempLow ) ) });
-      fadeOutAndIn($dailyHigh, function() { $(this).html( Math.round( tempHigh ) ) });
+      fadeOutAndIn($temp, function() { $(this).html( temp ) });
+      fadeOutAndIn($dailyLow, function() { $(this).html( humidity ) });
+      fadeOutAndIn($dailyHigh, function() { $(this).html( tempHigh ) });
     }
   });
 

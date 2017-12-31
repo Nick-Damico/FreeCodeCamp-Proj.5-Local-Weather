@@ -26,7 +26,7 @@ section#weather-module {
       }
     }
 
-    #low {
+    #humidity {
       text-align: left;
     }
     #high {
@@ -43,6 +43,7 @@ section#weather-module {
     }
 
     .current-temp {
+      text-shadow: 2px 2px 5px #0b3454;
       text-align: center;
       font-size: 6.875rem;
       color: $tempColor;
@@ -53,7 +54,7 @@ section#weather-module {
 
       &::after {
         content: '°';
-        color: darken($candyRed, 10%);
+        color: lighten($tempColor, 40%);
         position: absolute;
         font-size: 3.5rem;
         top: 10px;
