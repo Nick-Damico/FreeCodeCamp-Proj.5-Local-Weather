@@ -500,6 +500,7 @@ section#weather-module {
       content: '°';
       color: #fff; }
   section#weather-module .temp-container .current-temp {
+    text-shadow: 2px 2px 5px #0b3454;
     text-align: center;
     font-size: 6.875rem;
     color: #00ffc8;
@@ -509,7 +510,7 @@ section#weather-module {
     letter-spacing: -6px; }
     section#weather-module .temp-container .current-temp::after {
       content: '°';
-      color: #cc0041;
+      color: #ccfff4;
       position: absolute;
       font-size: 3.5rem;
       top: 10px; }
